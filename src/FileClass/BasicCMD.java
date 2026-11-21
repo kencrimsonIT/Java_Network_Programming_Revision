@@ -51,6 +51,7 @@ public class BasicCMD {
         }
     }
 
+    // Change directory method
     private String changeDirectory(String param) throws IOException {
         if (param.isBlank()) return this.defaultDir.getAbsolutePath() + "\n";
 
@@ -66,6 +67,7 @@ public class BasicCMD {
         return "Cannot change directory";
     }
 
+    // List directory method
     private String listDirectory() {
         File[] files = this.defaultDir.listFiles();
         StringBuilder fileNames = new StringBuilder();
@@ -81,6 +83,7 @@ public class BasicCMD {
         return fileNames.toString();
     }
 
+    // Delete file method
     private String del(String param) {
         File delFile = new File(this.defaultDir, param);
         if (!delFile.exists()) return "Could not find " + this.defaultDir.getAbsolutePath() + "\\" + param;
@@ -88,6 +91,7 @@ public class BasicCMD {
         return result ? "Delete successfully" : "Could not delete " + param;
     }
 
+    // Delete file helper method
     private boolean deleteFunction(File delFile) {
         File[] files = delFile.listFiles();
         if (files != null) {
@@ -98,6 +102,7 @@ public class BasicCMD {
         return delFile.delete();
     }
 
+    // Display default directory
     private void getDefaultDir() {
         this.userOut.print(this.defaultDir.getAbsolutePath() + ">");
     }
