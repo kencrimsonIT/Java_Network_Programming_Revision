@@ -63,7 +63,7 @@ public class StudentData {
             int recordPosition = 8 + recordSize * index;
             if (index < studentNumber) {
                 raf.seek(recordPosition);
-                newStudent.readRAFStudent(raf, NAME_LENGTH);
+                newStudent.writeRAFStudent(raf, NAME_LENGTH);
             }
         }
     }

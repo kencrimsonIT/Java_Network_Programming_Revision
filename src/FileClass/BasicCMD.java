@@ -56,9 +56,9 @@ public class BasicCMD {
         if (param.isBlank()) return this.defaultDir.getAbsolutePath() + "\n";
 
         File cdFile = new File(param);
-        if (!cdFile.isAbsolute()) cdFile = new File(this.defaultDir, param);
+        if (!cdFile.isAbsolute()) cdFile = new File(this.defaultDir, param); //Child folder
 
-        cdFile = cdFile.getCanonicalFile();
+        cdFile = cdFile.getCanonicalFile(); //Parent folder
         if (cdFile.exists() && cdFile.isDirectory()) {
             this.defaultDir = cdFile;
             return "";
