@@ -17,6 +17,7 @@ public class ServerProcess extends Thread {
     public ServerProcess(Socket socket) {
         try {
             this.socket = socket;
+            this.dao = new Dao();
             this.userIn = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
             this.userOut = new PrintWriter(this.socket.getOutputStream(), true);
         } catch (IOException e) {
@@ -47,7 +48,7 @@ public class ServerProcess extends Thread {
                 param = command.substring(syntax.length()).trim();
 
                 //Command cases
-                switch (command.toUpperCase()) {
+                switch (syntax.toUpperCase()) {
                     case "QUIT":
                         sendResponse(userOut, "Bye!");
                         break QUIT;
@@ -99,7 +100,7 @@ public class ServerProcess extends Thread {
                 param = command.substring(syntax.length()).trim();
 
                 //Command cases
-                switch (command.toUpperCase()) {
+                switch (syntax.toUpperCase()) {
                     case "QUIT":
                         sendResponse(userOut, "Bye!");
                         break QUIT;
